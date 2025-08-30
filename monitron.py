@@ -97,10 +97,6 @@ def autodetect(_=None):
 def menu():
   menu = gtk.Menu()
 
-  command_one = gtk.MenuItem(label="My Notes")
-  command_one.connect("activate", note)
-  menu.append(command_one)
-
   menu.append(gtk.SeparatorMenuItem())
 
   st = get_session_type()
@@ -145,15 +141,6 @@ def menu():
 
   menu.show_all()
   return menu
-
-
-def note(_):
-  editor = os.environ.get("EDITOR", "gedit")
-  try:
-    subprocess.Popen([editor, os.path.expanduser("~/Documents/notes.txt")])
-  except Exception:
-    subprocess.Popen(["gedit", os.path.expanduser("~/Documents/notes.txt")])
-
 
 def quit(_=None):
   gtk.main_quit()
