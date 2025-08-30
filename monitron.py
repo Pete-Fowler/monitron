@@ -12,7 +12,7 @@ from gi.repository import Gtk as gtk, AppIndicator3 as appindicator
 
 def main():
   indicator = appindicator.Indicator.new(
-    "customtray", "semi-starred-symbolic", appindicator.IndicatorCategory.APPLICATION_STATUS
+    "customtray", "video-display-symbolic", appindicator.IndicatorCategory.APPLICATION_STATUS
   )
   indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
   indicator.set_menu(menu())
