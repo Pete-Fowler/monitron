@@ -80,20 +80,6 @@ def open_gnome_displays(_=None):
   subprocess.Popen(["gnome-control-center", "display"])
 
 
-def autodetect(_=None):
-  st = get_session_type()
-  if st == "wayland":
-    open_gnome_displays()
-    return
-  outputs = get_connected_outputs()
-  if len(outputs) >= 2:
-    extend_two(outputs[0], outputs[1])
-  elif len(outputs) == 1:
-    use_only(outputs[0])
-  else:
-    subprocess.call(["notify-send", "Monitron", "No connected displays found"]) 
-
-
 def menu():
   menu = gtk.Menu()
 
@@ -130,10 +116,6 @@ def menu():
         menu.append(mi_mirror)
 
   menu.append(gtk.SeparatorMenuItem())
-
-  autod = gtk.MenuItem(label="Auto-detect")
-  autod.connect("activate", autodetect)
-  menu.append(autod)
 
   exittray = gtk.MenuItem(label="Exit Tray")
   exittray.connect("activate", quit)
